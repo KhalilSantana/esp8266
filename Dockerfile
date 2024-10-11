@@ -24,4 +24,5 @@ RUN mkdir /mnt/code
 WORKDIR /mnt/code
 RUN cp -r $IDF_PATH/examples/get-started/hello_world/ .
 RUN python3 -m pip install -r $IDF_PATH/requirements.txt --break-system-packages
+RUN apt update && apt install -y minicom && rm -rf /var/lib/apt/lists/* && apt clean
 
