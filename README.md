@@ -7,6 +7,7 @@ export MY_CODE="$PWD"                    # Mount the current working directory i
 sudo -E docker run --rm -it              \
     -v "$MY_CODE":/mnt/code/vol          \
     -v $MY_ESP8266_SERIAL:/dev/ttyUSB0   \
+    --privileged                         \
     ghcr.io/khalilsantana/esp8266
 ```
 
@@ -14,6 +15,12 @@ sudo -E docker run --rm -it              \
 ```bash
 cd hello_world/
 make -j$(nproc) flash
+```
+
+## Connect to serial port
+```bash
+minicom -D /dev/ttyUSB0 -b 115200 # -b being the baud rate
+# NOTE: Use CTRL+A then release the keys and press X to quit!
 ```
 
 ## Common Errors
